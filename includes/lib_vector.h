@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   lib_vector.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 20:59:00 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/11 23:15:07 by dtentaco         ###   ########.fr       */
+/*   Created: 2022/03/11 23:13:11 by dtentaco          #+#    #+#             */
+/*   Updated: 2022/03/11 23:14:48 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef LIB_VECTOR_H
+# define LIB_VECTOR_H
 
-# include "mlx.h"
-# include "libft.h"
-# include "lib_vector.h"
-# include <fcntl.h>
-# include <stdlib.h>
 # include <math.h>
-# include <stdio.h>
 
-# define REFLECTION_LIMIT 3
-
-# define SP 0
-# define PL 1
-# define SQ 2
-# define TR 3
-# define CY 4
-# define CU 5
-# define PY 6
-
-# define EPSILON 0.00001
-
-typedef struct		s_minilibx
+typedef struct	s_point
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-}					t_minilibx;
+	double		x;
+	double		y;
+	double		z;
+}				t_point;
 
 #endif
