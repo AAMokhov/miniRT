@@ -11,6 +11,8 @@ FILES	=	main.c \
 			geometry/vector.c \
 			figures/sphere.c \
 			scene/camera.c \
+			scene/scene.c \
+			ray_tracing/trace_ray.c \
 
 SRCS	= $(addprefix $(SRCDIR), $(FILES))
 
