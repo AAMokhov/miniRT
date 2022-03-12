@@ -16,6 +16,9 @@
 # include "mlx.h"
 # include "libft.h"
 # include "lib_vector.h"
+# include "utils.h"
+# include "sphere.h"
+# include "camera.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>

@@ -15,11 +15,17 @@
 
 # include <math.h>
 
-typedef struct	s_point
+typedef struct	s_vector
 {
-	double		x;
-	double		y;
-	double		z;
-}				t_point;
+	float		x;
+	float		y;
+	float		z;
+}				t_vector;
+
+t_vector	*ft_new_vec(float x, float y, float z);
+t_vector	*ft_vec_subtraction(t_vector *vec1, t_vector *vec2);
+float		ft_vec_len(t_vector *vec);
+void		ft_vec_normalize(t_vector *vec);
+float		ft_vec_dotprod(t_vector *vec1, t_vector *vec2);
 
 #endif

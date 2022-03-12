@@ -7,6 +7,10 @@ SRCDIR	= srcs/
 LIB		= lib/
 
 FILES	=	main.c \
+			utils.c \
+			geometry/vector.c \
+			figures/sphere.c \
+			scene/camera.c \
 
 SRCS	= $(addprefix $(SRCDIR), $(FILES))
 

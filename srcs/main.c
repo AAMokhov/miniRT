@@ -16,8 +16,18 @@ int	main(int argc, char **argv)
 {
 
 	t_minilibx	mlx;
+	t_vector vec;
+	float x;
+	float y;
+	float z;
 
+	x = 3.4;
+	y = 5.0;
+	z = 1.2;
 	(void)argc;
 	(void)argv;
+	(void)mlx;
+	printf("test\n");
+	vec = *ft_new_vec(x, y, z);
 	return(0);
 }
