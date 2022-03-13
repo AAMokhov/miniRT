@@ -7,6 +7,13 @@ SRCDIR	= srcs/
 LIB		= lib/
 
 FILES	=	main.c \
+			utils.c \
+			geometry/vector.c \
+			figures/sphere.c \
+			scene/camera.c \
+			scene/scene.c \
+			ray_tracing/trace_ray.c \
+			intersections/sphere_intersection.c \
 
 SRCS	= $(addprefix $(SRCDIR), $(FILES))
 
@@ -25,7 +32,7 @@ MACOS_FLAGS	= -L $(LIB)minilibx_opengl_20191021 -lmlx -framework OpenGL -framewo
 ${NAME}:	${OBJS}
 			make -C $(LIB)libft
 # make -C $(LIB)lib_vector
-			${CC} ${CFLAGS} $(OBJS) $(FLAGS) -o ${NAME}
+			${CC} ${CFLAGS} $(OBJS) $(FLAGS) $(MACOS_FLAGS) -o ${NAME}
 
 all:		${NAME}
 

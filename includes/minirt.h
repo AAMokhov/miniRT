@@ -16,6 +16,12 @@
 # include "mlx.h"
 # include "libft.h"
 # include "lib_vector.h"
+# include "utils.h"
+# include "sphere.h"
+# include "camera.h"
+# include "scene.h"
+# include "view_plane.h"
+# include "sphere_intersection.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
@@ -38,5 +44,7 @@ typedef struct		s_minilibx
 	void			*mlx_ptr;
 	void			*win_ptr;
 }					t_minilibx;
+
+void ft_ray_tracing(void *mlx, void *window, t_scene *scene);
 
 #endif
