@@ -6,6 +6,8 @@ SRCDIR	= srcs/
 
 LIB		= lib/
 
+MLX		= $(LIB)minilibx_opengl_20191021
+
 FILES	=	main.c \
 			utils.c \
 			geometry/vector.c \
@@ -23,27 +25,28 @@ CC		= gcc -g
 
 RM		= rm -f
 
-CFLAGS	= -Wall -Wextra -Werror -I $(HEAD)
+CFLAGS	= -Wall -Wextra -Werror -I $(HEAD) $(MACOS_MACRO)
 
-FLAGS = -L $(LIB)libft -lft
+FLAGS = -L $(LIB)libft -lft $(MACOS_FLAGS)
 
-MACOS_FLAGS	= -L $(LIB)minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit 
+MACOS_MACRO = -D MACOS
+
+MACOS_FLAGS	= -L $(MLX) -lmlx -framework OpenGL -framework AppKit
 
 ${NAME}:	${OBJS}
 			make -C $(LIB)libft
-# make -C $(LIB)lib_vector
-			${CC} ${CFLAGS} $(OBJS) $(FLAGS) $(MACOS_FLAGS) -o ${NAME}
+			make -C $(MLX)
+			${CC} ${CFLAGS} $(OBJS) $(FLAGS) -o ${NAME}
 
 all:		${NAME}
 
 clean:
 			make clean -C $(LIB)libft
-# make clean -C $(LIB)lib_vector
+			make clean -C $(MLX)
 			${RM} ${OBJS}
 
 fclean:		clean
 			make fclean -C $(LIB)libft
-# make fclean -C $(LIB)lib_vector
 			${RM} ${NAME}
 
 re:			fclean all

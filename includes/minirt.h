@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 20:59:00 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/11 23:15:07 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/14 00:54:41 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdio.h>
+
+# ifdef MACOS
+#  define OS_NAME 1
+# endif
 
 # define REFLECTION_LIMIT 3
 
