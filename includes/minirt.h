@@ -21,6 +21,7 @@
 # include "camera.h"
 # include "scene.h"
 # include "view_plane.h"
+# include "sphere_intersection.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>

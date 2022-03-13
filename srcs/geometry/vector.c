@@ -47,3 +47,6 @@ float	ft_vec_dotprod(t_vector *vec1, t_vector *vec2)
 	result = ((vec1->x * vec2->x) + (vec1->y * vec2->y) + (vec1->z * vec2->z));
 	return (result);
 }
+
+//добавить функцию умножения вектора на какое-то число
+// ft_vec_miltiply(t_vector *vec, float multiplier)
