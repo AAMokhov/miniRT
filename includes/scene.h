@@ -6,7 +6,11 @@
 typedef struct	s_scene
 {
 	t_camera 	*cams;
-	t_sphere 	*sphere;
+	t_sphere 	*sphere; // нужно убрать
+	t_list		**ls_head_fig;
+	int			flg_ambl_light;
+	int			amlight_color;
+	float		ambient_light;
 	float 		width;
 	float 		height;
 }				t_scene;

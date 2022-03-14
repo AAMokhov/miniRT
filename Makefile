@@ -16,6 +16,11 @@ FILES	=	main.c \
 			scene/scene.c \
 			ray_tracing/trace_ray.c \
 			intersections/sphere_intersection.c \
+			parser/parser.c \
+			parser/parser_utils.c \
+			parser/parser_utils2.c \
+			parser/parser_stuff.c \
+			parser/parser_elements.c
 
 SRCS	= $(addprefix $(SRCDIR), $(FILES))
 
