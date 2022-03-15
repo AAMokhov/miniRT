@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 20:59:00 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/16 00:38:11 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:31:32 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void ft_ray_tracing(void *mlx, void *window, t_scene *scene);
 void		parse_scene(t_scene *data, char **av);
 
 void		parse_ambient_light(t_scene *data, char **str);
-void		parse_light(t_list **is_head_fig, char **str);
+void		parse_light(t_light *cs_light, char **str);
 void		parse_camera(t_scene *data, char **str);
 void		parse_cylinder(t_list **is_head_fig, char **str);
 void		parse_sphere(t_list **is_head_fig, char **str);

@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:15:25 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/16 01:23:12 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:29:38 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		parse(t_scene *data, char **str_ptr)
 	else if (*str == 'c' && *(str + 1) == 'y' && *(str++) && *(str++))
 		parse_cylinder(&data->ls_head_fig, &str);
 	else if (*str == 'L' && (*(str + 1) == 32 || *(str + 1) == 9) && *(str++))
-		parse_light(&data->ls_head_fig, &str);
+		parse_light(data->light, &str);
 	else if (*str == 's' && *(str + 1) == 'p' && *(str++) && *(str++))
 		parse_sphere(&data->ls_head_fig, &str);
 	else if (*str == 'p' && *(str + 1) == 'l' && *(str++) && *(str++))
@@ -55,7 +55,7 @@ void			parse_scene(t_scene *data, char **av)
 	int			fd;
 
 	data->ls_head_fig = NULL;
-	data->ls_head_light = NULL;
+	data->light = NULL;
 	data->cams = NULL;
 	write(1, "Parsing scene...\n", 17);
 	str = (char *)enh_malloc(sizeof(char) * (BUFSIZE + 1));
