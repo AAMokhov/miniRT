@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 21:03:39 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/15 01:10:10 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/16 00:23:48 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		ft_error_exit(-2);
-	parse_scene(&mlx, &data, argv);
+	parse_scene(&data, argv);
 
 	//TEST
 	// t_vector  *sphere_centre = ft_new_vec(3, 2, -32);
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	// scene->width = 800;
 	// scene->height = 600;
 
-	// mlx.mlx_ptr = mlx_init();
+	mlx.mlx_ptr = mlx_init();
 	// mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, scene->width, scene->height, "test");
 	// ft_ray_tracing(mlx.mlx_ptr, mlx.win_ptr, scene);
 // ft_free_scene - функция, которяа освобождает все, что есть в сцене и саму сцену

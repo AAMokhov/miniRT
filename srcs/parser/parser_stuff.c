@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 21:51:08 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/15 00:27:24 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/16 01:12:18 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,24 @@ void		parse_camera(t_scene *data, char **str)
 	t_vector	*dir;
 	float 		fov;
 
+	get_next(str);
 	origin = parse_vec(str);
 	dir = parse_vec(str);
 	ft_vec_normalize(dir);
 	fov = ft_atoi_ptr(str);
 	check_in_range(fov, 0, 180, "camera");
 	data->cams = ft_new_cam(origin, dir, fov);
+}
+
+void		parse_light(t_list **is_head_light, char **str)
+{
+	t_light	*new_light;
+
+	new_light = enh_malloc(sizeof(t_light));
+	get_next(str);
+	new_light->origin = parse_vec(str);
+	new_light->br = ft_atof(str);
+	check_in_range(new_light->br, 0, 1, "light");
+	new_light->color = parse_color(str);
+	ft_lstadd_back(is_head_light, ft_lstnew((void *)new_light));
 }

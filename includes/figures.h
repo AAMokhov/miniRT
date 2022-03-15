@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 17:00:02 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/15 01:04:16 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/16 00:39:49 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 typedef struct	s_plane
 {
-	t_vector	p;
+	t_vector	*p;
 	float		width;
 	float		height;
 	float 		x_pixel; //пиксель окна просмотра
@@ -53,8 +53,7 @@ typedef struct		s_figures
 	int					type;
 	union u_figures		fig;
 	int					color;
-	t_vector			normal;
-	struct s_figures	*next;
+	t_vector			*normal;
 }					t_figures;
 
 #endif
