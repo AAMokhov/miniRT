@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 21:51:08 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/16 01:29:17 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:59:56 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,20 @@ void		parse_ambient_light(t_scene *data, char **str)
 
 void		parse_camera(t_scene *data, char **str)
 {
-	t_vector	*origin;
-	t_vector	*dir;
-	float 		fov;
+	t_camera	new_cam;
 
+	if (data->cams != NULL)
+	{
+		scene_error(
+			"Camera(C) can only be declared once in the scene\n");
+	}
 	get_next(str);
-	origin = parse_vec(str);
-	dir = parse_vec(str);
-	ft_vec_normalize(dir);
-	fov = ft_atoi_ptr(str);
-	check_in_range(fov, 0, 180, "camera");
-	data->cams = ft_new_cam(origin, dir, fov);
+	new_cam.origin = parse_vec(str);
+	new_cam.direction = parse_vec(str);
+	ft_vec_normalize(new_cam.direction);
+	new_cam.fov = ft_atoi_ptr(str);
+	check_in_range(new_cam.fov, 0, 180, "camera");
+	data->cams = ft_new_cam(new_cam.origin, new_cam.direction, new_cam.fov);
 }
 
 void		parse_light(t_light *cs_light, char **str)

@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 17:00:02 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/16 00:39:49 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:51:26 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct	s_plane
 typedef struct	s_cylinder
 {
 	t_vector	*centre;
-	t_vector	*direction;
 	float		radius;
 	float		height;
 	float		dist1;
