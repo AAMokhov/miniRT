@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 20:59:00 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/17 21:40:22 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/18 00:55:49 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "view_plane.h"
 # include "figures.h"
 # include "sphere_intersection.h"
+# include "ggl_mlx_define.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
@@ -46,9 +47,10 @@ typedef struct		s_minilibx
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
+	t_vplane		*vplane;
 }					t_minilibx;
 
-void ft_ray_tracing(void *mlx, void *window, t_scene *scene);
+void ft_ray_tracing(t_minilibx *mlx, t_scene *scene);
 
 /*
 **			 	Parsing functions
@@ -75,4 +77,13 @@ void		check_in_range(float nb, float min, float max, char *str_obj);
 int			parse_color(char **str);
 void		check_iscomma(char **str);
 t_vector	*parse_vec(char **str);
+
+/*
+**				Minilibx functions
+*/
+
+void		init_mlx(t_minilibx *mlx, t_scene *data);
+void		graphic_loop(t_minilibx mlx, t_scene data);
+int			close_program(void *param);
+void		ft_mlx_pixel_put(t_camera *cam, int x, int y, int color);
 #endif

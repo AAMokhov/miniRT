@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-t_scene	*ft_new_scene(t_camera *cam, t_sphere *sphere)
+t_scene	*ft_new_scene(t_camera *cam)
 {
 	t_scene	*scene;
 
@@ -8,7 +8,6 @@ t_scene	*ft_new_scene(t_camera *cam, t_sphere *sphere)
 	if (!scene)
 		ft_error_exit(-1);
 	scene->cams = cam;
-	scene->sphere = sphere;
 	scene->width = 0;
 	scene->height = 0;
 	return (scene);

@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-void ft_ray_tracing(void *mlx, void *window, t_scene *scene)
+void ft_ray_tracing(t_minilibx *mlx, t_scene *scene)
 {
 	int			mlx_x;
 	int			mlx_y; //for mlx_pixel_put - заменить на mlx_image
@@ -10,27 +10,38 @@ void ft_ray_tracing(void *mlx, void *window, t_scene *scene)
 	float 		y_ray; //  координаты луча
 	float 		x_ray;
 	t_vector	*ray;
-	t_vplane	*vplane;
+	t_figures	*ls_ptr;
+	t_list		*ls_head;
 
 	mlx_y = 0;
-	vplane = ft_get_view_plane(scene->width, scene->height, scene->cams->fov); //создаем окно прсомотра
 	y_angle = (scene->height / 2);
-	while (y_angle >= (scene->height / 2) * (-1))
+	ls_head = scene->ls_head_fig;
+	while (y_angle > (scene->height / 2) * (-1))
 	{
-		y_ray = y_angle * vplane->y_pixel;
+		y_ray = y_angle * mlx->vplane->y_pixel;
 		x_angle = (scene->width / 2) * (-1);
 		mlx_x = 0;
-		while (x_angle <= scene->width / 2)
+		while (x_angle < scene->width / 2)
 		{
-			x_ray = x_angle * vplane->x_pixel;
+			x_ray = x_angle * mlx->vplane->x_pixel;
 			ray = ft_new_vec(x_ray, y_ray, -1);
 			ft_vec_normalize(ray); //нормализация не всегда нужна???
-			//функция пересечения со сферой
-			if (ft_sph_intersect(scene->cams, ray, scene->sphere))
-				color = 16777215; //цвета должны преобразовываться в один int
-			else
-				color = 0;
-			mlx_pixel_put(mlx, window, mlx_x, mlx_y, color);
+
+			while (ls_head)
+			{
+				ls_ptr = (t_figures *)(ls_head->content);
+				if (ls_ptr->type == SP)
+				{
+					//функция пересечения со сферой
+					if (ft_sph_intersect(scene->cams, ray, &ls_ptr->fig.sp))
+						color = ls_ptr->color; //цвета должны преобразовываться в один int
+					else
+						color = 0;
+				}
+				ls_head = ls_head->next;
+			}
+			ft_mlx_pixel_put(scene->cams, mlx_x, mlx_y, color);
+			// mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, mlx_x, mlx_y, color);
 			free (ray);
 			x_angle++;
 			mlx_x++;

@@ -41,3 +41,18 @@ void		fatal(char *message)
 	perror(error_message);
 	exit(EXIT_FAILURE);
 }
+
+int			close_program(void *param)
+{
+	param = (void *)param;
+	exit(EXIT_SUCCESS);
+	return (1);
+}
+
+void		ft_mlx_pixel_put(t_camera *cam, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = cam->img_adr + (y * cam->line_length + x * (cam->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}

@@ -12,7 +12,6 @@ typedef struct		s_light
 //содержит указатели на лист всех камер, на лист всех фигур, на лист света
 typedef struct	s_scene
 {
-	t_sphere 	*sphere; // нужно убрать
 	t_camera 	*cams;
 	t_list		*ls_head_fig;
 	t_light		*light;
@@ -23,6 +22,6 @@ typedef struct	s_scene
 	float 		height;
 }				t_scene;
 
-t_scene	*ft_new_scene(t_camera *cam, t_sphere *sphere);
+t_scene	*ft_new_scene(t_camera *cam);
 
 #endif
