@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 21:03:39 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/16 00:23:48 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/17 23:08:22 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	// t_vector 	*cam_orign = ft_new_vec(0, 0, 0); //нужна функция для преобразования любых координат
 	// t_vector 	*cam_direction = ft_new_vec(0, 0, -1); //||-||-||
 	// t_camera 	*cam = ft_new_cam(cam_orign, cam_direction, 70);
-	// t_scene 	*scene = ft_new_scene(cam, sphere);
+	// t_scene 	*scene = ft_new_scene(cam, sphere); // нужна ли нам функция, когда одну сцену можно создать в стеке?
 	// scene->width = 800;
 	// scene->height = 600;
 
