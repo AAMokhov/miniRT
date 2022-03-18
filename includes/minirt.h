@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 20:59:00 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/18 00:55:49 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:56:36 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void ft_ray_tracing(t_minilibx *mlx, t_scene *scene);
 */
 
 void		parse_scene(t_scene *data, char **av);
+int			ft_pixel_color(t_scene *scene, t_vector *ray);
 
 void		parse_ambient_light(t_scene *data, char **str);
 void		parse_light(t_light **cs_light, char **str);
@@ -84,6 +85,7 @@ t_vector	*parse_vec(char **str);
 
 void		init_mlx(t_minilibx *mlx, t_scene *data);
 void		graphic_loop(t_minilibx mlx, t_scene data);
+int			key_hook(int keycode, t_minilibx *mlx);
 int			close_program(void *param);
 void		ft_mlx_pixel_put(t_camera *cam, int x, int y, int color);
 #endif
