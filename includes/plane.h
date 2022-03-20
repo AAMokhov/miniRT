@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   plane.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kclassie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 14:01:56 by kclassie          #+#    #+#             */
-/*   Updated: 2022/03/14 14:02:02 by kclassie         ###   ########.fr       */
+/*   Created: 2022/03/14 14:01:07 by kclassie          #+#    #+#             */
+/*   Updated: 2022/03/14 14:01:14 by kclassie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#ifndef PLANE_H
+#define PLANE_H
 
-typedef struct			s_sphere
+typedef struct			s_plane
 {
-	t_vector			*centre;
-	float				radius;
+	t_vector			*centre; //x, y, z
+	t_vector			*orientation; //3d normalized orientation vector. In range [-1,1] for each x,y,z axis:0.0,0.0,1.0
 	t_color				*color;
-	struct	s_sphere	*next;
-}						t_sphere;
+	struct	s_plane		*next;
+}						t_plane;
 
-t_sphere	*ft_new_sphere(t_vector *centre, float	radius, t_color	*color);
+t_plane	*ft_new_plane(t_vector *centre, t_vector *orientation, t_color *color);
 
 #endif

@@ -6,16 +6,16 @@ SRCDIR	= srcs/
 
 LIB		= lib/
 
-MLX		= $(LIB)minilibx_opengl_20191021
-
 FILES	=	main.c \
 			utils.c \
-			geometry/vector.c \
+			figures/plane.c \
 			figures/sphere.c \
+			geometry/vector.c \
+			intersections/sphere_intersection.c \
+			intersections/plane_intersection.c \
+			ray_tracing/trace_ray.c \
 			scene/camera.c \
 			scene/scene.c \
-			ray_tracing/trace_ray.c \
-			intersections/sphere_intersection.c \
 
 SRCS	= $(addprefix $(SRCDIR), $(FILES))
 
@@ -25,28 +25,27 @@ CC		= gcc -g
 
 RM		= rm -f
 
-CFLAGS	= -Wall -Wextra -Werror -I $(HEAD) $(MACOS_MACRO)
+CFLAGS	= -Wall -Wextra -Werror -I $(HEAD)
 
-FLAGS = -L $(LIB)libft -lft $(MACOS_FLAGS)
+FLAGS = -L $(LIB)libft -lft
 
-MACOS_MACRO = -D MACOS
+MACOS_FLAGS	= -L $(LIB)minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit 
 
-MACOS_FLAGS	= -L $(MLX) -lmlx -framework OpenGL -framework AppKit
-
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} Makefile
 			make -C $(LIB)libft
-			make -C $(MLX)
-			${CC} ${CFLAGS} $(OBJS) $(FLAGS) -o ${NAME}
+# make -C $(LIB)lib_vector
+			${CC} ${CFLAGS} $(OBJS) $(FLAGS) $(MACOS_FLAGS) -o ${NAME}
 
 all:		${NAME}
 
 clean:
 			make clean -C $(LIB)libft
-			make clean -C $(MLX)
+# make clean -C $(LIB)lib_vector
 			${RM} ${OBJS}
 
 fclean:		clean
 			make fclean -C $(LIB)libft
+# make fclean -C $(LIB)lib_vector
 			${RM} ${NAME}
 
 re:			fclean all

@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kclassie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 14:01:56 by kclassie          #+#    #+#             */
-/*   Updated: 2022/03/14 14:02:02 by kclassie         ###   ########.fr       */
+/*   Created: 2022/03/14 14:03:49 by kclassie          #+#    #+#             */
+/*   Updated: 2022/03/14 14:03:52 by kclassie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#include "minirt.h"
 
-typedef struct			s_sphere
+t_plane	*ft_new_plane(t_vector *centre, t_vector *orientation, t_color *color)
 {
-	t_vector			*centre;
-	float				radius;
-	t_color				*color;
-	struct	s_sphere	*next;
-}						t_sphere;
+	t_plane	*plane;
 
-t_sphere	*ft_new_sphere(t_vector *centre, float	radius, t_color	*color);
-
-#endif
+	plane = malloc(sizeof(t_plane));
+	if (!plane)
+		ft_error_exit(-1);
+	plane->centre = centre;
+	plane->orientation = orientation;
+	plane->color = color;
+	return (plane);
+}

@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   colours.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kclassie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 14:01:56 by kclassie          #+#    #+#             */
-/*   Updated: 2022/03/14 14:02:02 by kclassie         ###   ########.fr       */
+/*   Created: 2022/03/14 14:00:22 by kclassie          #+#    #+#             */
+/*   Updated: 2022/03/14 14:00:32 by kclassie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPHERE_H
-# define SPHERE_H
+#ifndef COLOURS_H
+#define COLOURS_H
 
-typedef struct			s_sphere
+typedef struct	s_color
 {
-	t_vector			*centre;
-	float				radius;
-	t_color				*color;
-	struct	s_sphere	*next;
-}						t_sphere;
-
-t_sphere	*ft_new_sphere(t_vector *centre, float	radius, t_color	*color);
+	float	r;
+	float	g;
+	float	b;
+}				t_color;
 
 #endif

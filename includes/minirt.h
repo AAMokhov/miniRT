@@ -17,11 +17,13 @@
 # include "libft.h"
 # include "lib_vector.h"
 # include "utils.h"
+# include "colours.h"
 # include "sphere.h"
+# include "plane.h"
 # include "camera.h"
 # include "scene.h"
 # include "view_plane.h"
-# include "sphere_intersection.h"
+# include "intersections.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>

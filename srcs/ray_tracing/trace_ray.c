@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   trace_ray.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kclassie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/14 14:04:56 by kclassie          #+#    #+#             */
+/*   Updated: 2022/03/14 14:04:59 by kclassie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
 void ft_ray_tracing(void *mlx, void *window, t_scene *scene)
@@ -24,9 +36,10 @@ void ft_ray_tracing(void *mlx, void *window, t_scene *scene)
 		{
 			x_ray = x_angle * vplane->x_pixel;
 			ray = ft_new_vec(x_ray, y_ray, -1);
-			ft_vec_normalize(ray); //нормализация не всегда нужна???
+			//ft_vec_normalize(ray); //нормализация не всегда нужна???
 			//функция пересечения со сферой
-			if (ft_sph_intersect(scene->cams, ray, scene->sphere))
+//			if (ft_sph_intersect(scene->cams, ray, scene->sphere))
+			if (ft_pl_intersect(scene->cams, ray, scene->plane))
 				color = 16777215; //цвета должны преобразовываться в один int
 			else
 				color = 0;
@@ -45,7 +58,6 @@ t_vplane	*ft_get_view_plane(float width, float height, float fov)
 	t_vplane	*vplane;
 	float 		aspect_ratio; //масштабирование
 
-	(void)fov;
 	vplane = malloc(sizeof(t_vplane));
 	if (!vplane)
 		ft_error_exit(-1);
