@@ -13,9 +13,14 @@ FILES	=	main.c \
 			geometry/vector.c \
 			intersections/sphere_intersection.c \
 			intersections/plane_intersection.c \
+			intersections/cylinder_intersection.c \
 			ray_tracing/trace_ray.c \
 			scene/camera.c \
-			scene/scene.c \
+			parser/parser.c \
+			parser/parser_utils.c \
+			parser/parser_utils2.c \
+			parser/parser_stuff.c \
+			parser/parser_elements.c
 
 SRCS	= $(addprefix $(SRCDIR), $(FILES))
 

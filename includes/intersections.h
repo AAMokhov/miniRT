@@ -13,7 +13,8 @@
 #ifndef INTERSECTIONS_H
 # define INTERSECTIONS_H
 
-int	ft_sph_intersect(t_camera *cam, t_vector *ray, t_sphere *sphere);
-int	ft_pl_intersect(t_camera *cam, t_vector *ray, t_plane *plane);
+int	ft_sp_intersect(t_camera *cam, t_vector *ray, t_sphere *sphere);
+int	ft_pl_intersect(t_camera *cam, t_vector *ray, t_figures	*plane);
+int	ft_cy_intersect(t_camera *cam, t_vector *ray, t_figures	*cylinder);
 
 #endif

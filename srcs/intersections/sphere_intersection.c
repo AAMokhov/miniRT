@@ -12,7 +12,7 @@
 
 #include "minirt.h"
 
-int	ft_sph_intersect(t_camera *cam, t_vector *ray, t_sphere *sphere)
+int	ft_sp_intersect(t_camera *cam, t_vector *ray, t_sphere *sphere)
 {
 	float		b;
 	float		c;
@@ -32,7 +32,8 @@ int	ft_sph_intersect(t_camera *cam, t_vector *ray, t_sphere *sphere)
 	if (discr < 0)
 		return (0); //нет пересечения со сферой
 	dist_1 = ((b * (-1)) - sqrt(discr)) / 2;
-	dist_2 = ((b * (-1)) + sqrt(discr)) / 2; //нужно, если камера находитсявнутри сферы
+	dist_2 = ((b * (-1)) + sqrt(discr)) / 2; //TODO: нужно, если камера
+	// находитсявнутри сферы
 	if (dist_1 > 0) //сфера перед камерой
 		return (1); //см. видео 4.2 с 06:20 - когда несколько объектов
 	return(0);

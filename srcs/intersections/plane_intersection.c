@@ -1,18 +1,28 @@
 
 #include "minirt.h"
 
-int	ft_pl_intersect(t_camera *cam, t_vector *ray, t_plane *plane)
+int	ft_pl_intersect(t_camera *cam, t_vector *ray, t_figures	*plane)
 {
-	float		denom;
-	float		dist;
-	t_vector	*cam_plane;
+	float	denom;
+	float	dist;
+	t_vector	*tmp_vec;
 
-	(void)cam;
-	denom = ft_vec_dotprod(ray, plane->orientation);
-	if (!denom)
-		return (0);
-	cam_plane = ft_vec_subtraction(ray, plane->centre);
-	dist = ft_vec_dotprod(cam_plane, plane->centre) / denom;
-	free(cam_plane);
-	return(dist);
+	denom = ft_vec_dotprod(plane->normal, ray);
+	if (denom < 0)
+	{
+		ft_vec_mult(plane->normal, -1);
+		denom *= -1;
+	}
+	if (denom > 0.000001)
+	{
+		tmp_vec = ft_vec_subtraction(plane->fig.pl.p, cam->origin);
+		dist = ft_vec_dotprod(tmp_vec, plane->normal) / denom;
+		if (dist >= 0.000001)
+		{
+			free(tmp_vec);
+			return (dist);
+		}
+		free(tmp_vec);
+	}
+	return(0);
 }

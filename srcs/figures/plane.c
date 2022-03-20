@@ -12,15 +12,15 @@
 
 #include "minirt.h"
 
-t_plane	*ft_new_plane(t_vector *centre, t_vector *orientation, t_color *color)
-{
-	t_plane	*plane;
-
-	plane = malloc(sizeof(t_plane));
-	if (!plane)
-		ft_error_exit(-1);
-	plane->centre = centre;
-	plane->orientation = orientation;
-	plane->color = color;
-	return (plane);
-}
+//t_plane	*ft_new_plane(t_vector *centre, t_vector *orientation, t_color *color)
+//{
+//	t_plane	*plane;
+//
+//	plane = malloc(sizeof(t_plane));
+//	if (!plane)
+//		ft_error_exit(-1);
+//	plane->centre = centre;
+//	plane->orientation = orientation;
+//	plane->color = color;
+//	return (plane);
+//}

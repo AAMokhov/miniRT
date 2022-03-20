@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_vector.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:13:11 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/11 23:14:48 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:06:35 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ t_vector	*ft_vec_subtraction(t_vector *vec1, t_vector *vec2);
 float		ft_vec_len(t_vector *vec);
 void		ft_vec_normalize(t_vector *vec);
 float		ft_vec_dotprod(t_vector *vec1, t_vector *vec2);
+void		ft_vec_mult(t_vector *vec, float num);
+t_vector	*cross_prod3x1(t_vector *vec1, t_vector *vec2);
 
 #endif
