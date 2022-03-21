@@ -22,7 +22,7 @@
 # include "scene.h"
 # include "view_plane.h"
 # include "figures.h"
-# include "sphere_intersection.h"
+# include "intersection.h"
 # include "ggl_mlx_define.h"
 # include <fcntl.h>
 # include <stdlib.h>

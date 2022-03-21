@@ -15,12 +15,17 @@
 
 # include "minirt.h"
 
-// typedef struct	s_sphere
-// {
-// 	t_vector	c;
-// 	float		r;
-// 	// int		inside;
-// }				t_sphere;
+typedef struct	s_cyvar
+{
+	float		*r2;
+	t_vector	top;
+	t_vector	bot;
+	float 		hc;
+	t_vector 	h;
+	float 		w;
+	t_vector 	v;
+	float 		t;
+}				t_cyvar;
 
 typedef struct	s_plane
 {
