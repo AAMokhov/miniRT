@@ -4,25 +4,19 @@
 int	ft_pl_intersect(t_camera *cam, t_vector *ray, t_figures	*plane)
 {
 	float	denom;
-	float	dist;
+	float	nom;
+	float	t;
 	t_vector	*tmp_vec;
 
 	denom = ft_vec_dotprod(plane->normal, ray);
-	if (denom < 0)
-	{
-		ft_vec_mult(plane->normal, -1);
-		denom *= -1;
-	}
+	tmp_vec = ft_vec_subtraction(plane->fig.pl.p, cam->origin);
+	nom = ft_vec_dotprod(tmp_vec, plane->normal);
+	free(tmp_vec);
 	if (denom > 0.000001)
 	{
-		tmp_vec = ft_vec_subtraction(plane->fig.pl.p, cam->origin);
-		dist = ft_vec_dotprod(tmp_vec, plane->normal) / denom;
-		if (dist >= 0.000001)
-		{
-			free(tmp_vec);
-			return (dist);
-		}
-		free(tmp_vec);
+		t = -nom /denom;
+		if (t > 0.000001)
+			return (t);
 	}
 	return(0);
 }
