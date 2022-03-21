@@ -13,13 +13,14 @@
 #ifndef FIGURES_H
 # define FIGURES_H
 
-typedef struct			s_sphere
-{
-	t_vector			*centre;
-	float				radius;
-	t_color				*color;
-	struct	s_sphere	*next;
-}						t_sphere;
+# include "minirt.h"
+
+// typedef struct	s_sphere
+// {
+// 	t_vector	c;
+// 	float		r;
+// 	// int		inside;
+// }				t_sphere;
 
 typedef struct	s_plane
 {
@@ -53,8 +54,5 @@ typedef struct		s_figures
 	int					color;
 	t_vector			*normal;
 }					t_figures;
-
-t_plane		*ft_new_plane(t_vector *centre, t_vector *orientation, t_color *color);
-t_sphere	*ft_new_sphere(t_vector *centre, float	radius, t_color	*color);
 
 #endif

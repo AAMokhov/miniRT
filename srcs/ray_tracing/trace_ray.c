@@ -50,25 +50,26 @@ t_vplane	*ft_get_view_plane(float width, float height, float fov)
 	t_vplane	*vplane;
 	float 		aspect_ratio; //масштабирование
 
+	(void)fov;
 	vplane = malloc(sizeof(t_vplane));
 	if (!vplane)
 		ft_error_exit(-1);
 	aspect_ratio = width * pow(height, (-1));
 	vplane->width = (tan((float)fov / 2 * (M_PI / 180))) * 2;
-	vplane->height = vplane->width * pow(aspect_ratio, (-1));
-	vplane->x_pixel = vplane->width * pow(width, (-1));
-	vplane->y_pixel = vplane->height * pow(height, (-1));
+	vplane->height = vplane->width * pow(aspect_ratio, -1);
+	vplane->x_pixel = vplane->width * pow(width, -1);
+	vplane->y_pixel = vplane->height * pow(height, -1);
 	return (vplane);
 }
 
 int	ft_pixel_color(t_scene *scene, t_vector *ray)
 {
-	//int			color_from_light;
+	int			color_from_light;
 	int			color;
 	t_figures	*ls_ptr;
 	t_list		*ls_head;
 
-	//color_from_light = 0;
+	color_from_light = 0;
 	color = 0;
 	ls_head = scene->ls_head_fig;
 	ft_vec_normalize(ray);
@@ -77,17 +78,12 @@ int	ft_pixel_color(t_scene *scene, t_vector *ray)
 		ls_ptr = (t_figures *)(ls_head->content);
 		if (ls_ptr->type == SP)
 		{
-			if (ft_sp_intersect(scene->cams, ray, &ls_ptr->fig.sp))
+			if (ft_sph_intersect(scene->cams, ray, &ls_ptr->fig.sp))
 				return (ls_ptr->color);// TMP
 		}
 		if (ls_ptr->type == PL)
 		{
 			if (ft_pl_intersect(scene->cams, ray, ls_ptr))
-				return (ls_ptr->color);// TMP
-		}
-		if (ls_ptr->type == CY)
-		{
-			if (ft_cy_intersect(scene->cams, ray, ls_ptr))
 				return (ls_ptr->color);// TMP
 		}
 		ls_head = ls_head->next;
