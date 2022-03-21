@@ -16,13 +16,13 @@
 # include "mlx.h"
 # include "libft.h"
 # include "lib_vector.h"
+# include "colours.h"
+# include "figures.h"
 # include "utils.h"
-# include "sphere.h"
 # include "camera.h"
 # include "scene.h"
 # include "view_plane.h"
-# include "figures.h"
-# include "sphere_intersection.h"
+# include "intersections.h"
 # include "ggl_mlx_define.h"
 # include <fcntl.h>
 # include <stdlib.h>

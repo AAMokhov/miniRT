@@ -29,8 +29,8 @@ int	main(int argc, char **argv)
 void	init_mlx(t_minilibx *mlx, t_scene *data)
 {
 	mlx->mlx_ptr = mlx_init();
-	data->width = 800;
-	data->height = 600;
+	data->width = 1200;
+	data->height = 800;
 	mlx->vplane = ft_get_view_plane(data->width, data->height, data->cams->fov); //создаем окно прсомотра
 
 	data->cams->img_ptr = mlx_new_image(mlx->mlx_ptr, data->width, data->height); // какой нужно размер?

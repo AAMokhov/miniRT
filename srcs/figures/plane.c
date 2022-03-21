@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kclassie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 13:59:48 by kclassie          #+#    #+#             */
-/*   Updated: 2022/03/14 14:00:11 by kclassie         ###   ########.fr       */
+/*   Created: 2022/03/14 14:03:49 by kclassie          #+#    #+#             */
+/*   Updated: 2022/03/14 14:03:52 by kclassie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#include "minirt.h"
 
-//always == -1 (?why)
-typedef struct	s_camera
-{
-	t_vector	*origin;
-	t_vector	*direction;
-	float 		fov;
-
-	void		*img_ptr;
-	char		*img_adr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_camera;
-
-t_camera	*ft_new_cam(t_vector *origin, t_vector *direction, float fov);
-
-#endif
+//t_plane	*ft_new_plane(t_vector *centre, t_vector *orientation, t_color *color)
+//{
+//	t_plane	*plane;
+//
+//	plane = malloc(sizeof(t_plane));
+//	if (!plane)
+//		ft_error_exit(-1);
+//	plane->centre = centre;
+//	plane->orientation = orientation;
+//	plane->color = color;
+//	return (plane);
+//}

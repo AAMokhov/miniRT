@@ -29,4 +29,5 @@ void		ft_vec_normalize(t_vector *vec);
 float		ft_vec_dotprod(t_vector *vec1, t_vector *vec2);
 void		ft_vec_mult(t_vector *vec, float num);
 t_vector	*cross_prod3x1(t_vector *vec1, t_vector *vec2);
+
 #endif
