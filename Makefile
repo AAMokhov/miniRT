@@ -34,7 +34,7 @@ CFLAGS	= -Wall -Wextra -Werror -I $(HEAD)
 
 FLAGS = -L $(LIB)libft -lft
 
-MACOS_FLAGS	= -L $(LIB)minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit 
+MACOS_FLAGS	= -L $(LIB)minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit
 
 ${NAME}:	${OBJS} Makefile
 			make -C $(LIB)libft
