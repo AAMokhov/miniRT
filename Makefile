@@ -16,6 +16,7 @@ FILES	=	main.c \
 			scene/scene.c \
 			ray_tracing/trace_ray.c \
 			intersections/sphere_intersection.c \
+			intersections/plane_intersection.c \
 			parser/parser.c \
 			parser/parser_utils.c \
 			parser/parser_utils2.c \

@@ -103,8 +103,12 @@ int	ft_pixel_color(t_scene *scene, t_vector *ray)
 		ls_ptr = (t_figures *)(ls_head->content);
 		if (ls_ptr->type == SP)
 		{
-		//функция пересечения со сферой
 			if (ft_sph_intersect(scene->cams, ray, &ls_ptr->fig.sp))
+				return (ls_ptr->color);// TMP
+		}
+		if (ls_ptr->type == PL)
+		{
+			if (ft_pl_intersect(scene->cams, ray, ls_ptr))
 				return (ls_ptr->color);// TMP
 		}
 		ls_head = ls_head->next;

@@ -13,7 +13,7 @@ int	ft_sph_intersect(t_camera *cam, t_vector *ray, t_sphere *sphere)
 	dist_1 = 0;
 	dist_2 = 0;
 	cam_sphere = ft_vec_subtraction(cam->origin, sphere->centre);
-	b = 2 * (ft_vec_dotprod(cam_sphere, ray));
+	b = 2 * ft_vec_dotprod(cam_sphere, ray);
 	c = ft_vec_dotprod(cam_sphere, cam_sphere) - pow(sphere->radius, 2);
 	discr = (pow(b, 2) - 4 * c);
 	free(cam_sphere);
