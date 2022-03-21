@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:15:25 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/20 12:29:00 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/21 16:20:39 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,12 +108,6 @@ void		parse_scene(t_scene *data, char **av)
 	char		*str;
 	int			fd;
 
-	data->ls_head_fig = NULL;
-	data->light = NULL;
-	data->cams = NULL;
-	data->flg_ambl_light = 0;
-	data->ambient_light = 0;
-	data->amlight_color = 0;
 	write(1, "Parsing scene...\n", 17);
 	str = (char *)enh_malloc(sizeof(char) * (BUFSIZE + 1));
 	if ((fd = open(av[1], 0)) == -1)
