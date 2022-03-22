@@ -11,10 +11,14 @@ MLX		= $(LIB)minilibx_opengl_20191021
 FILES	=	main.c \
 			utils.c \
 			geometry/vector.c \
+			geometry/tuple.c \
+			geometry/collations.c \
 			figures/sphere.c \
 			scene/camera.c \
 			scene/scene.c \
 			ray_tracing/trace_ray.c \
+			ray_tracing/ray.c \
+			ray_tracing/color.c \
 			intersections/sphere_intersection.c \
 			intersections/plane_intersection.c \
 			parser/parser.c \

@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:15:25 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/21 16:20:39 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:12:10 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void 		print_obj(t_scene *data)
 	int			i = 0;
 
 	printf("\nAmb light = %f\n", data->ambient_light);
-	printf("Amb color: %d\n\n", data->amlight_color);
+	printf("Amb color: [%f,%f,%f]\n\n", data->amlight_color.x, data->amlight_color.y, data->amlight_color.z);
 
 	printf("Cams:\nO: x=%f, y=%f, z=%f\n", data->cams->origin->x,data->cams->origin->y, data->cams->origin->z);
 	printf("D: x=%f, y=%f, z=%f\n", data->cams->direction->x, data->cams->direction->y, data->cams->direction->z);
@@ -66,7 +66,7 @@ void 		print_obj(t_scene *data)
 	{
 		printf("Light:\nO: x=%f, y=%f, z=%f\n", data->light->origin->x, data->light->origin->y, data->light->origin->z);
 		printf("Brightness: %f\n", data->light->br);
-		printf("Color: %d\n\n", data->light->color);
+		printf("Color: [%f,%f,%f]\n\n", data->light->color.x, data->light->color.y, data->light->color.z);
 	}
 
 	if (data->ls_head_fig)
@@ -94,7 +94,8 @@ void 		print_obj(t_scene *data)
 				printf("Rad: %f\n", ls_ptr->fig.cy.radius);
 			}
 			if (ls_ptr->normal != NULL)
-				printf("Norm: x=%f, y=%f, z=%f\n\n",ls_ptr->normal->x, ls_ptr->normal->y, ls_ptr->normal->z);
+				printf("Norm: x=%f, y=%f, z=%f\n",ls_ptr->normal->x, ls_ptr->normal->y, ls_ptr->normal->z);
+			printf("Color: [%f,%f,%f]\n\n", ls_ptr->color.x, ls_ptr->color.y, ls_ptr->color.z);
 			printf("\n");
 			ls_head = ls_head->next;
 			i++;

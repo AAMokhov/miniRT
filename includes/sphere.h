@@ -4,8 +4,8 @@
 typedef struct	s_sphere
 {
 	t_vector	*centre;
-	float 		radius;
-	// t_vector	*next;
+	float		radius;
+	int			inside;
 }				t_sphere;
 
 t_sphere	*ft_new_sphere(t_vector *centre, float	radius);

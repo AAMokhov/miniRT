@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 17:00:02 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/16 14:51:26 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:00:35 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define FIGURES_H
 
 # include "minirt.h"
-
-// typedef struct	s_sphere
-// {
-// 	t_vector	c;
-// 	float		r;
-// 	// int		inside;
-// }				t_sphere;
 
 typedef struct	s_plane
 {
@@ -51,7 +44,8 @@ typedef struct		s_figures
 {
 	int					type;
 	union u_figures		fig;
-	int					color;
+	// int					color;
+	t_color				color;
 	t_vector			*normal;
 }					t_figures;
 

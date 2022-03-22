@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 21:03:39 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/21 17:31:40 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:16:00 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	init_scene(t_scene *data)
 	data->cams = NULL;
 	data->flg_ambl_light = 0;
 	data->ambient_light = 0;
-	data->amlight_color = 0;
+	data->amlight_color.x = 0;
+	data->amlight_color.y = 0;
+	data->amlight_color.z = 0;
 }
 
 int	init_mlx(t_scene *scene)

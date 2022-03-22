@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_vector.h                                       :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 23:13:11 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/22 15:23:21 by dtentaco         ###   ########.fr       */
+/*   Created: 2022/03/22 13:21:59 by dtentaco          #+#    #+#             */
+/*   Updated: 2022/03/22 15:13:23 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_VECTOR_H
-# define LIB_VECTOR_H
+#ifndef RAY_H
+#define RAY_H
 
-# include <math.h>
+# include "minirt.h"
 # include "tuple.h"
 
-t_vector	*ft_new_vec(float x, float y, float z);
-t_vector	*ft_vec_subtraction(t_vector *vec1, t_vector *vec2);
-float		ft_vec_len(t_vector *vec);
-void		ft_vec_normalize(t_vector *vec);
-float		ft_vec_dotprod(t_vector *vec1, t_vector *vec2);
-void		ft_vec_mult(t_vector *vec, float num);
-t_vector	*cross_prod3x1(t_vector *vec1, t_vector *vec2);
+typedef struct s_ray	t_ray;
+
+struct s_ray
+{
+	t_tuple 	origin;
+	t_tuple 	direction;
+	float		dot_direction;
+};
+
+t_ray		new_ray(t_point *origin, t_point *direction);
+t_point		ray_position(t_ray *ray, float distance);
+t_ray		transform(t_ray *ray, t_matrix *matrix);
+
 #endif

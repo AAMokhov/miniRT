@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 20:59:00 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/21 17:41:08 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:06:28 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # include "sphere_intersection.h"
 # include "ggl_mlx_define.h"
 # include "matrix.h"
+# include "render.h"
+# include "ray.h"
+# include "tuple.h"
+# include "maths.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
@@ -75,7 +79,7 @@ void		get_next(char **str);
 float		ft_atof(char **str);
 int			ft_atoi_ptr(char **str);
 void		check_in_range(float nb, float min, float max, char *str_obj);
-int			parse_color(char **str);
+t_color		parse_color(char **str);
 void		check_iscomma(char **str);
 t_vector	*parse_vec(char **str);
 
