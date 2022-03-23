@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 00:41:46 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/22 15:05:50 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/22 21:57:43 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_color 	parse_color(char **str)
 	color.x = 0;
 	color.y = 0;
 	color.z = 0;
-	// color.w = COLOR;
+	color.w = COLOR;
 	r |= ft_atoi_ptr(str);
 	check_in_range(r, 0, 255, "colors must be in range [0, 255],");
 	color.x = r;
@@ -57,5 +57,5 @@ t_vector	*parse_vec(char **str)
 	check_iscomma(str);
 	p.z = ft_atof(str);
 	get_next(str);
-	return (ft_new_vec(p.x, p.y, p.z));
+	return (new_tuple(p.x, p.y, p.z, POINT));
 }

@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:15:25 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/22 15:12:10 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:31:57 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,9 @@ void 		print_obj(t_scene *data)
 			else if (ls_ptr->type == PL)
 			{
 				printf("%d - PLANE\n", i);
-				printf("Point: x=%f, y=%f, z=%f\n", ls_ptr->fig.pl.p->x, ls_ptr->fig.pl.p->y, ls_ptr->fig.pl.p->z);
+				printf("Point: x=%f, y=%f, z=%f\n", ls_ptr->fig.pl.centre->x,
+													ls_ptr->fig.pl.centre->y,
+													ls_ptr->fig.pl.centre->z);
 			}
 			else if (ls_ptr->type == CY)
 			{

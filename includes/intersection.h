@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 13:21:59 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/22 20:13:33 by dtentaco         ###   ########.fr       */
+/*   Created: 2022/03/23 20:01:18 by dtentaco          #+#    #+#             */
+/*   Updated: 2022/03/24 01:15:35 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-#define RAY_H
 
-# include "minirt.h"
-# include "tuple.h"
+#ifndef INTERSECTION_H
+# define INTERSECTION_H
 
-struct s_ray
-{
-	t_tuple 	origin;
-	t_tuple 	direction;
-	float		dot_direction;
-};
-
-typedef struct s_ray	t_ray;
-
-t_ray		new_ray(t_point *origin, t_point *direction);
-t_point		*ray_position(t_ray *ray, float distance);
-t_ray		transform(t_ray *ray, t_matrix *matrix);
+t_pair	run_intersect(void *ray, t_figures *fig);
+t_pair	ft_sph_intersect(void *is_ray, void *is_sphere);
+t_pair	ft_pl_intersect(void *is_ray, void	*is_plane);
 
 #endif

@@ -6,12 +6,14 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:47:54 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/22 13:48:54 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/23 11:06:34 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATHS_H
 # define MATHS_H
+
+# include <float.h>
 
 typedef struct s_pair	t_pair;
 
