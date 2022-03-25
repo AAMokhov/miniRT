@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 20:59:00 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/21 17:41:08 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/24 01:31:09 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 # include "libft.h"
 # include "lib_vector.h"
 # include "utils.h"
-# include "sphere.h"
 # include "camera.h"
 # include "scene.h"
 # include "figures.h"
-# include "sphere_intersection.h"
+# include "intersection.h"
 # include "ggl_mlx_define.h"
 # include "matrix.h"
+# include "render.h"
+# include "ray.h"
+# include "tuple.h"
+# include "maths.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
@@ -35,13 +38,14 @@
 
 # define BUFSIZE 32
 
-# define WIN_HEIGHT	600
-# define WIN_WIDTH	800
+// # define WIN_HEIGHT	600
+// # define WIN_WIDTH	800
+
+# define WIN_HEIGHT	450
+# define WIN_WIDTH	600
 
 # define SUCCESS	1
 # define ERROR		0
-
-# define REFLECTION_LIMIT 3
 
 # define SP 0 // sphere
 # define PL 1 // plane
@@ -75,7 +79,7 @@ void		get_next(char **str);
 float		ft_atof(char **str);
 int			ft_atoi_ptr(char **str);
 void		check_in_range(float nb, float min, float max, char *str_obj);
-int			parse_color(char **str);
+t_color		parse_color(char **str);
 void		check_iscomma(char **str);
 t_vector	*parse_vec(char **str);
 

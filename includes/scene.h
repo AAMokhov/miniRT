@@ -3,12 +3,13 @@
 # define SCENE_H
 
 # include "matrix.h"
+# include "tuple.h"
 
 typedef struct		s_light
 {
 	t_vector		*origin;
 	float			br;
-	int				color;
+	t_color				color;
 }					t_light;
 
 typedef struct		s_image
@@ -52,7 +53,7 @@ typedef struct	s_scene_attr
 	t_vplane	*vplane;
 
 	int			flg_ambl_light;
-	int			amlight_color;
+	t_color		amlight_color;
 	float		ambient_light;
 	float 		width;
 	float 		height;

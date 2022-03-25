@@ -2,10 +2,11 @@
 #ifndef CAMERA_H
 # define CAMERA_H
 
-//always == -1 (?why)
+#include "tuple.h"
+
 typedef struct	s_camera
 {
-	t_vector	*origin;
+	t_point		*origin;
 	t_vector	*direction;
 	float 		fov;
 }				t_camera;

@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 21:51:08 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/17 21:40:01 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/22 21:54:43 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void		parse_ambient_light(t_scene *data, char **str)
 	data->ambient_light = ft_atof(str);
 	check_in_range(data->ambient_light, 0, 1, "ambient lightning");
 	data->amlight_color = parse_color(str);
+	data->amlight_color = ft_color_multiplication(&data->amlight_color,
+													data->ambient_light);
 }
 
 void		parse_camera(t_scene *data, char **str)
@@ -53,5 +55,7 @@ void		parse_light(t_light **cs_light, char **str)
 	new_light->br = ft_atof(str);
 	check_in_range(new_light->br, 0, 1, "light");
 	new_light->color = parse_color(str);
+	new_light->color = ft_color_multiplication(&new_light->color,
+												new_light->br);
 	*cs_light = new_light;
 }
