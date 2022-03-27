@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trace_ray.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:48:17 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/24 01:25:57 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/27 16:06:48 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,33 +70,3 @@ void ft_ray_tracing(t_scene *scene)
 		// printf("\n");
 	}
 }
-
-	// int			mlx_x;
-	// int			mlx_y; //for mlx_pixel_put - заменить на mlx_image
-	// float		x_angle;
-	// float 		y_angle;
-	// int 		color;
-	// float 		y_ray; //  координаты луча
-	// float 		x_ray;
-	// t_vector	*ray;
-
-	// mlx_y = 0;
-	// y_angle = (scene->height / 2);
-	// while (y_angle > (scene->height / 2) * (-1))
-	// {
-	// 	y_ray = y_angle * scene->vplane->y_pixel;
-	// 	x_angle = (scene->width / 2) * (-1);
-	// 	mlx_x = 0;
-	// 	while (x_angle < scene->width / 2)
-	// 	{
-	// 		x_ray = x_angle * scene->vplane->x_pixel;
-	// 		ray = ft_new_vec(x_ray, y_ray, -1);
-	// 		color = ft_pixel_color(scene, ray);
-	// 		ft_mlx_pixel_put(&scene->canvas, mlx_x, mlx_y, color);
-	// 		free (ray);
-	// 		x_angle++;
-	// 		mlx_x++;
-	// 	}
-	// 	y_angle--;
-	// 	mlx_y++;
-	// }
