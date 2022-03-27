@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trace_ray.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:48:17 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/24 01:25:57 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/27 18:40:49 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	new_image(t_scene *scene)
 
 	ft_ray_tracing(scene);
 	mlx_put_image_to_window(scene->mlx_ptr, scene->win_ptr, scene->canvas.img_ptr, 0, 0);
+	mlx_destroy_image(scene->mlx_ptr, scene->canvas.img_ptr);
 	return (SUCCESS);
 }
 
@@ -37,8 +38,8 @@ t_ray	trace_ray(t_point *origin, int x, int y, t_vplane *view)
 
 	position = new_tuple(x * view->x_pixel,
 						 y * view->y_pixel, -1, VECTOR);
-	// position = multiply_matrix_tuple(view->transform, position);
-	// position = multiply_matrix_tuple(view->rotate, position);
+	position = multiply_matrix_tuple(view->transform, position);
+	position = multiply_matrix_tuple(view->rotate, position);
 	ft_vec_normalize(position);
 	ray = new_ray(origin, position);
 	return (ray);
@@ -70,33 +71,3 @@ void ft_ray_tracing(t_scene *scene)
 		// printf("\n");
 	}
 }
-
-	// int			mlx_x;
-	// int			mlx_y; //for mlx_pixel_put - заменить на mlx_image
-	// float		x_angle;
-	// float 		y_angle;
-	// int 		color;
-	// float 		y_ray; //  координаты луча
-	// float 		x_ray;
-	// t_vector	*ray;
-
-	// mlx_y = 0;
-	// y_angle = (scene->height / 2);
-	// while (y_angle > (scene->height / 2) * (-1))
-	// {
-	// 	y_ray = y_angle * scene->vplane->y_pixel;
-	// 	x_angle = (scene->width / 2) * (-1);
-	// 	mlx_x = 0;
-	// 	while (x_angle < scene->width / 2)
-	// 	{
-	// 		x_ray = x_angle * scene->vplane->x_pixel;
-	// 		ray = ft_new_vec(x_ray, y_ray, -1);
-	// 		color = ft_pixel_color(scene, ray);
-	// 		ft_mlx_pixel_put(&scene->canvas, mlx_x, mlx_y, color);
-	// 		free (ray);
-	// 		x_angle++;
-	// 		mlx_x++;
-	// 	}
-	// 	y_angle--;
-	// 	mlx_y++;
-	// }
