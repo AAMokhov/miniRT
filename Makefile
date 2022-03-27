@@ -16,7 +16,6 @@ FILES	=	main.c \
 			geometry/normal.c \
 			geometry/matrix.c \
 			geometry/view.c \
-			figures/sphere.c \
 			scene/camera.c \
 			scene/scene.c \
 			ray_tracing/trace_ray.c \

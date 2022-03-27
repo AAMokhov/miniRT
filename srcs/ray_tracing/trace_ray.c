@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:48:17 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/27 16:06:48 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/27 18:40:49 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	new_image(t_scene *scene)
 
 	ft_ray_tracing(scene);
 	mlx_put_image_to_window(scene->mlx_ptr, scene->win_ptr, scene->canvas.img_ptr, 0, 0);
+	mlx_destroy_image(scene->mlx_ptr, scene->canvas.img_ptr);
 	return (SUCCESS);
 }
 
@@ -37,8 +38,8 @@ t_ray	trace_ray(t_point *origin, int x, int y, t_vplane *view)
 
 	position = new_tuple(x * view->x_pixel,
 						 y * view->y_pixel, -1, VECTOR);
-	// position = multiply_matrix_tuple(view->transform, position);
-	// position = multiply_matrix_tuple(view->rotate, position);
+	position = multiply_matrix_tuple(view->transform, position);
+	position = multiply_matrix_tuple(view->rotate, position);
 	ft_vec_normalize(position);
 	ray = new_ray(origin, position);
 	return (ray);

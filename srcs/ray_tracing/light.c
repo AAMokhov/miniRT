@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 21:43:12 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/23 22:33:40 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/27 18:45:57 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ static void 	apply_light(t_light *light, t_color *color, t_comp *computations)
 {
 	t_vector	*light_ray;
 	t_color		*diffuse;
-	// t_color		*specular;
-	// t_vector	*minus_light;
-	// t_vector 	*reflected;
 	float		cosine;
 	float		distance;
 
@@ -27,24 +24,11 @@ static void 	apply_light(t_light *light, t_color *color, t_comp *computations)
 	ft_vec_normalize(light_ray);
 
 	diffuse = new_tuple(0, 0, 0, COLOR);
-	// specular = new_tuple(0, 0 ,0, COLOR);
 
 	cosine = ft_vec_dotprod(light_ray, computations->normal);
 	if (cosine >= 0)
-	{
 		diffuse = multiply_on_scalar(&(light->color), cosine * distance);
-		// minus_light = multiply_on_scalar(light_ray, -1);
-		// reflected = reflect(minus_light, computations->normal);
-		// cosine = ft_vec_dotprod(reflected, computations->eye_v);
-		// if (cosine > 0)
-		// {
-		// 	// float factor = ft_pow(cosine, (int)computations->object->specular);
-		// 	// float factor = pow(cosine, (int)computations->object->specular);
-		// 	// specular = multiply_on_scalar(&(light->effective_color), factor * distance);
-		// }
-	}
 	*color = ft_color_addition(color, diffuse);
-	// *color = ft_color_addition(color, &specular);
 }
 
 static void	apply_shadow(t_light *light, t_color *color)

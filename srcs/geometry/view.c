@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:39:57 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/23 23:58:49 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/27 16:51:40 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,17 @@ int		ft_get_view_plane(t_scene *scene)
 	vplane->rotation_x = 0;
 	vplane->rotation_y = 0;
 
-	// free_matrix(vplane->rotate);
-	// vplane->rotate = new_identity_matrix(4);
-	// free_matrix(vplane->transform);
-	// vplane->transform = transform_view(scene->cams->origin,
-	// 									  scene->cams->direction,
-	// 									   (t_vector){0, 1, 0, VECTOR});
+	vplane->rotate = NULL;
+	vplane->transform = NULL;
+
+	free_matrix(vplane->rotate);
+	vplane->rotate = new_identity_matrix(4);
+	free_matrix(vplane->transform);
+	vplane->transform = transform_view(scene->cams->origin,
+										scene->cams->direction,
+										(t_vector){0, 1, 0, VECTOR});
+	if (!vplane->rotate || !vplane->transform)
+		return (ERROR);
 	scene->vplane = vplane;
 	return (SUCCESS);
 }
@@ -48,6 +53,7 @@ t_matrix	*transform_view(t_point *from, t_vector *forward, t_vector up)
 	t_matrix *transform;
 	t_matrix *tmp;
 
+// проверяем кейсы направления камеры
 	if (compare_tuples(forward, &(t_tuple){0, 1, 0, VECTOR}))
 		up = (t_vector){0, 0, -1, VECTOR};
 	else if (compare_tuples(forward, &(t_tuple){0, -1, 0, VECTOR}))

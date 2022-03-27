@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 23:33:01 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/23 23:54:48 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/27 16:20:16 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ t_matrix*	new_matrix(int size)
 	return (new);
 }
 
+/* создаем единичную матрицу
+ *  | 1 0 0 |
+ *  | 0 1 0 |
+ *  | 0 0 1 |
+ */
 t_matrix*	new_identity_matrix(int size)
 {
 	t_matrix*	new;

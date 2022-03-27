@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:52:02 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/22 20:05:57 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/27 16:45:57 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-// t_vector *ft_new_vec(float x, float y, float z)
-// {
-// 	t_vector	*vec;
-
-// 	vec = malloc(sizeof(t_vector));
-// 	if (!vec)
-// 		ft_error_exit(-1);
-// 	vec->x = x;
-// 	vec->y = y;
-// 	vec->z = z;
-// 	return (vec);
-// }
 
 t_tuple	*ft_vec_add(const t_tuple *tuple1, const t_tuple *tuple2)
 {
@@ -99,7 +86,7 @@ t_vector	*cross_prod3x1(t_vector *vec1, t_vector *vec2)
 	float	y;
 	float	z;
 
-	x = (vec1->x * vec2->z) - (vec1->z * vec2->y);
+	x = (vec1->y * vec2->z) - (vec1->z * vec2->y);
 	y = (vec1->z * vec2->x) - (vec1->x * vec2->z);
 	z = (vec1->x * vec2->y) - (vec1->y * vec2->x);
 	return (new_tuple(x, y, z, VECTOR));
