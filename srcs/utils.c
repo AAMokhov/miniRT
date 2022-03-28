@@ -49,7 +49,7 @@ int			close_program(void *param)
 	return (1);
 }
 
-int			key_hook(int keycode, t_minilibx *mlx)
+int			key_hook(int keycode, t_scene *mlx)
 {
 	if (keycode == ESC_KEY)
 	{
@@ -59,10 +59,10 @@ int			key_hook(int keycode, t_minilibx *mlx)
 	return (0);
 }
 
-void		ft_mlx_pixel_put(t_camera *cam, int x, int y, int color)
+void		ft_mlx_pixel_put(t_image *canvas, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = cam->img_adr + (y * cam->line_length + x * (cam->bits_per_pixel / 8));
+	dst = canvas->img_adr + (y * canvas->line_length + x * (canvas->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }

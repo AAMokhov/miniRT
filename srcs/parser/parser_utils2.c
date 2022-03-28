@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 00:41:46 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/15 23:01:06 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/22 21:57:43 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,32 @@ void	check_iscomma(char **str)
 	(*str)++;
 }
 
-int			parse_color(char **str)
+t_color 	parse_color(char **str)
 {
 	int	r;
 	int	g;
 	int	b;
+	t_color	color;
 
 	r = 0;
 	g = 0;
 	b = 0;
+	color.x = 0;
+	color.y = 0;
+	color.z = 0;
+	color.w = COLOR;
 	r |= ft_atoi_ptr(str);
 	check_in_range(r, 0, 255, "colors must be in range [0, 255],");
-	r <<= 16;
+	color.x = r;
 	check_iscomma(str);
 	g |= ft_atoi_ptr(str);
 	check_in_range(g, 0, 255, "colors must be in range [0, 255],");
-	g <<= 8;
+	color.y = g;
 	check_iscomma(str);
 	b |= ft_atoi_ptr(str);
 	check_in_range(b, 0, 255, "colors must be in range [0, 255],");
-	return (r | g | b);
+	color.z = b;
+	return (color);
 }
 
 t_vector	*parse_vec(char **str)
@@ -51,5 +57,5 @@ t_vector	*parse_vec(char **str)
 	check_iscomma(str);
 	p.z = ft_atof(str);
 	get_next(str);
-	return (ft_new_vec(p.x, p.y, p.z));
+	return (new_tuple(p.x, p.y, p.z, POINT));
 }
