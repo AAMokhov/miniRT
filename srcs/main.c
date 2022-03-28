@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 	if (!ft_get_view_plane(&data))
 		ft_error_exit(-1); // написать функцию raise_exception()
 	new_image(&data);
-
 	graphic_loop(data);
 	return(0);
 }
