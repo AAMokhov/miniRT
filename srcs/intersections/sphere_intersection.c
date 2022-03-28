@@ -31,6 +31,11 @@ t_pair	ft_quadratic_roots(float a, float b, float c)
 			point.y = d;
 		}
 	}
+	if (d < 0)
+	{
+		point.x = MAXFLOAT;
+		point.y = MAXFLOAT;
+	}
 	return (point);
 }
 

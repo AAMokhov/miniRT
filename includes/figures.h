@@ -67,6 +67,8 @@ typedef struct		s_figures
 t_vector	*run_normal_at(t_figures* this, void *computations);
 t_vector	*normal_at_sphere(void *this, void *computations);
 t_vector	*normal_at_plane(void *this, void *computations);
+t_vector	*normal_at_cylinder(void *this, void *computations);
+
 
 void		resize(t_figures* this, float size);
 void		resize_sp(void* this, float size);

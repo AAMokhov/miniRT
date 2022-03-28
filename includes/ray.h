@@ -28,5 +28,7 @@ typedef struct s_ray	t_ray;
 t_ray		new_ray(t_point *origin, t_point *direction);
 t_point		*ray_position(t_ray *ray, float distance);
 t_ray		transform(t_ray *ray, t_matrix *matrix);
+float		closest_point_on_cylinder(t_figures *cy, t_ray *ray, float t1,
+									   float t2);
 
 #endif

@@ -2,8 +2,9 @@
 #ifndef SPHERE_INTERSECTION_H
 # define SPHERE_INTERSECTION_H
 
-int	ft_sph_intersect(t_camera *cam, t_vector *ray, t_sphere *sphere);
-int	ft_pl_intersect(t_camera *cam, t_vector *ray, t_figures	*plane);
-int	ft_cl_intersect(t_camera *cam, t_vector *ray, t_figures	*cylinder);
+t_pair	run_intersect(void *ray, t_figures *fig);
+t_pair	ft_sph_intersect(void *is_ray, void *is_sphere);
+t_pair	ft_pl_intersect(void *is_ray, void	*is_plane);
+t_pair	ft_cy_intersect(void *is_ray, void	*is_cylinder); //TODO
 
 #endif

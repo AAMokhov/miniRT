@@ -26,6 +26,7 @@ FILES	=	main.c \
 			ray_tracing/resize.c \
 			intersections/sphere_intersection.c \
 			intersections/plane_intersection.c \
+			intersections/cylinder_intersection.c \
 			parser/parser.c \
 			parser/parser_utils.c \
 			parser/parser_utils2.c \
@@ -36,7 +37,7 @@ SRCS	= $(addprefix $(SRCDIR), $(FILES))
 
 OBJS	= ${SRCS:.c=.o}
 
-CC		= gcc -g
+CC		= gcc -g -fsanitize=address
 
 RM		= rm -f
 
@@ -48,7 +49,7 @@ MACOS_MACRO = -D MACOS
 
 MACOS_FLAGS	= -L $(MLX) -lmlx -framework OpenGL -framework AppKit
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} Makefile
 			make -C $(LIB)libft
 			make -C $(MLX)
 			${CC} ${CFLAGS} $(OBJS) $(FLAGS) -o ${NAME}
