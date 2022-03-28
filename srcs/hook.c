@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 20:56:21 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/27 21:23:10 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/28 19:32:42 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int			close_program(void *param)
+int	close_program(void *param)
 {
 	param = (void *)param;
 	exit(EXIT_SUCCESS);
 	return (1);
 }
 
-int			key_hook(int keycode, t_scene *scene)
+int	key_hook(int keycode, t_scene *scene)
 {
 	printf("WAS KEY %d\n", keycode);
 	if (keycode == ESC_KEY)
