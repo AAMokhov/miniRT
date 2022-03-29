@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 21:43:12 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/27 18:45:57 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/29 23:33:02 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void 	apply_light(t_light *light, t_color *color, t_comp *computations)
 {
 	t_vector	*light_ray;
 	t_color		*diffuse;
+	t_color		*specular;
 	float		cosine;
 	float		distance;
 
@@ -24,11 +25,23 @@ static void 	apply_light(t_light *light, t_color *color, t_comp *computations)
 	ft_vec_normalize(light_ray);
 
 	diffuse = new_tuple(0, 0, 0, COLOR);
+	specular = new_tuple(0, 0 ,0, COLOR);
 
 	cosine = ft_vec_dotprod(light_ray, computations->normal);
 	if (cosine >= 0)
+	{
 		diffuse = multiply_on_scalar(&(light->color), cosine * distance);
+		t_vector *minus_light = multiply_on_scalar(light_ray, -1);
+		t_vector *reflected = reflect(minus_light, computations->normal);
+		cosine = ft_vec_dotprod(reflected, computations->eye_v);
+		if (cosine > 0)
+		{
+			float factor = pow(cosine, 70);
+			specular = multiply_on_scalar(&(light->color), factor * distance);
+		}
+	}
 	*color = ft_color_addition(color, diffuse);
+	*color = ft_color_addition(color, specular);
 }
 
 static void	apply_shadow(t_light *light, t_color *color)
