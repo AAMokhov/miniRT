@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:15:25 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/29 22:39:21 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/31 21:42:43 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		parse(t_scene *data, char **str_ptr)
 
 static void		parse_elems(t_scene *data, char *str)
 {
-	while (*str)
+	while (*str && str)
 	{
 		if (*str == '#')
 		{
@@ -43,6 +43,8 @@ static void		parse_elems(t_scene *data, char *str)
 		}
 		else
 			parse(data, &str);
+		if (*str == '\0')
+			break;
 		str++;
 	}
 	if (data->flg_ambl_light == 0 || data->cams == NULL)
@@ -112,7 +114,8 @@ void		parse_scene(t_scene *data, char **av)
 	int			fd;
 
 	write(1, "Parsing scene...\n", 17);
-	str = (char *)enh_malloc(sizeof(char) * (BUFSIZE + 1));
+	str = (char *)enh_malloc(sizeof(char) * (1));
+	str[0] = '\0';
 	if ((fd = open(av[1], 0)) == -1)
 		fatal("while opening file");
 	str = readfile(str, fd);
