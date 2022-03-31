@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 21:03:39 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/23 23:29:32 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/29 23:38:55 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ int	init_mlx(t_scene *scene)
 	return (SUCCESS);
 }
 
-void		graphic_loop(t_scene data)
+void	graphic_loop(t_scene data)
 {
 	mlx_hook(data.win_ptr, DESTROYNOTIFY, STRUCTURENOTIFYMASK, close_program, 0);
 	mlx_hook(data.win_ptr, KEYPRESS, KEYPRESSMASK, key_hook, &data);
+	mlx_mouse_hook(data.win_ptr, mouse_hook, &data);
 	mlx_loop(data.mlx_ptr);
 }

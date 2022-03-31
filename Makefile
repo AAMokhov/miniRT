@@ -10,6 +10,7 @@ MLX		= $(LIB)minilibx_opengl_20191021
 
 FILES	=	main.c \
 			utils.c \
+			hook.c \
 			geometry/vector.c \
 			geometry/tuple.c \
 			geometry/collations.c \

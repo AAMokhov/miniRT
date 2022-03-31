@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtentaco <dtentaco@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 20:59:00 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/24 01:31:09 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/03/29 23:44:34 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 
 int		new_image(t_scene *scene);
 void	ft_ray_tracing(t_scene *scene);
+t_ray	trace_ray(t_point *origin, int x, int y, t_vplane *view);
 
 /*
 **			 	Parsing functions
@@ -91,6 +92,7 @@ void		init_scene(t_scene *data);
 int			init_mlx(t_scene *scene);
 void		graphic_loop(t_scene data);
 int			key_hook(int keycode, t_scene *data);
+int			mouse_hook(int button, int x, int y, t_scene *scene);
 int			close_program(void *param);
 void		ft_mlx_pixel_put(t_image *canvas, int x, int y, int color);
 #endif
