@@ -25,15 +25,16 @@ t_ray	new_ray(t_point *origin, t_point *direction)
 
 t_point	*ray_position(t_ray *ray, float distance)
 {
-	t_tuple *tmp1;
-	t_tuple *tmp2;
+	t_tuple	*tmp1;
+	t_tuple	*tmp2;
 
 	tmp1 = multiply_on_scalar(&ray->direction, distance);
 	tmp2 = ft_vec_add(&ray->origin, tmp1);
 	free(tmp1);
 	return (tmp2);
 }
-float 	radians(float degrees)
+
+float	radians(float degrees)
 {
 	return (degrees / 180 * M_PI);
 }

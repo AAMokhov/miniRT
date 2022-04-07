@@ -24,11 +24,11 @@ t_tuple	*new_tuple(float x, float y, float z, float type)
 	return (new);
 }
 
-int		compare_tuples(const t_tuple *tuple1, const t_tuple *tuple2)
+int	compare_tuples(const t_tuple *tuple1, const t_tuple *tuple2)
 {
-	return (ft_equal(tuple1->x, tuple2->x) &&\
-			ft_equal(tuple1->y, tuple2->y) &&\
-			ft_equal(tuple1->z, tuple2->z) &&\
+	return (ft_equal(tuple1->x, tuple2->x) && \
+			ft_equal(tuple1->y, tuple2->y) && \
+			ft_equal(tuple1->z, tuple2->z) && \
 			ft_equal(tuple1->w, tuple2->w));
 }
 
@@ -36,20 +36,30 @@ t_tuple	*multiply_on_scalar(const t_tuple *tuple1, float scalar)
 {
 	t_tuple	*tuple2;
 
-	tuple2 = new_tuple(tuple1->x * scalar,
-				   tuple1->y * scalar,
-				   tuple1->z * scalar,
-				   tuple1->w);
+	tuple2 = new_tuple(tuple1->x * scalar, tuple1->y * scalar,
+			tuple1->z * scalar, tuple1->w);
 	return (tuple2);
 }
 
-// вычисление отраженного вектора
-t_vector	*reflect(t_vector* ray, t_vector* normal)
+// reflected vector calculation
+t_vector	*reflect(t_vector *ray, t_vector *normal)
 {
-	t_vector *reflected;
-	t_vector *mult;
+	t_vector	*reflected;
+	t_vector	*mult;
 
 	mult = multiply_on_scalar(normal, 2 * ft_vec_dotprod(ray, normal));
 	reflected = ft_vec_subtract(ray, mult);
 	return (reflected);
+}
+
+t_vector	*cross_prod3x1(t_vector *vec1, t_vector *vec2)
+{
+	float	x;
+	float	y;
+	float	z;
+
+	x = (vec1->y * vec2->z) - (vec1->z * vec2->y);
+	y = (vec1->z * vec2->x) - (vec1->x * vec2->z);
+	z = (vec1->x * vec2->y) - (vec1->y * vec2->x);
+	return (new_tuple(x, y, z, VECTOR));
 }

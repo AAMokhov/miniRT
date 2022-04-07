@@ -12,33 +12,30 @@
 
 #include "minirt.h"
 
-static void 	apply_light(t_light *light, t_color *color, t_comp *computations)
+static void	apply_light(t_light *light, t_color *color, t_comp *computations)
 {
 	t_vector	*light_ray;
+	t_vector	*reflected;
 	t_color		*diffuse;
 	t_color		*specular;
-	float		cosine;
-	float		distance;
+	t_pair		*pair;
 
+	pair = (t_pair *)enh_malloc(sizeof (t_pair));
 	light_ray = ft_vec_subtract(light->origin, computations->point);
-	distance = pow(0.9, ft_vec_len(light_ray));
+	pair->y = (float)pow(0.9, ft_vec_len(light_ray));
 	ft_vec_normalize(light_ray);
-
 	diffuse = new_tuple(0, 0, 0, COLOR);
-	specular = new_tuple(0, 0 ,0, COLOR);
-
-	cosine = ft_vec_dotprod(light_ray, computations->normal);
-	if (cosine >= 0)
+	specular = new_tuple(0, 0, 0, COLOR);
+	pair->x = ft_vec_dotprod(light_ray, computations->normal);
+	if (pair->x >= 0)
 	{
-		diffuse = multiply_on_scalar(&(light->color), cosine * distance);
-		t_vector *minus_light = multiply_on_scalar(light_ray, -1);
-		t_vector *reflected = reflect(minus_light, computations->normal);
-		cosine = ft_vec_dotprod(reflected, computations->eye_v);
-		if (cosine > 0)
-		{
-			float factor = pow(cosine, 70);
-			specular = multiply_on_scalar(&(light->color), factor * distance);
-		}
+		diffuse = multiply_on_scalar(&(light->color), pair->x * pair->y);
+		reflected = reflect(multiply_on_scalar(light_ray, -1),
+				computations->normal);
+		pair->x = ft_vec_dotprod(reflected, computations->eye_v);
+		if (pair->x > 0)
+			specular = multiply_on_scalar(&(light->color),
+					(float)pow(pair->x, 70) * pair->y);
 	}
 	*color = ft_color_addition(color, diffuse);
 	*color = ft_color_addition(color, specular);
@@ -46,7 +43,7 @@ static void 	apply_light(t_light *light, t_color *color, t_comp *computations)
 
 static void	apply_shadow(t_light *light, t_color *color)
 {
-	t_color 	shadow;
+	t_color	shadow;
 
 	shadow = *multiply_on_scalar(color, light->br * -1 * 0.05);
 	*color = ft_color_addition(color, &shadow);
@@ -75,7 +72,7 @@ t_color	lightning(t_scene *scene, t_comp *computations)
 	t_color	color;
 
 	color = ft_color_addition(&(computations->object->color),
-							  &(scene->amlight_color));
+			&(scene->amlight_color));
 	light_ptr = scene->light;
 	color = ft_color_multiplication(&color, scene->ambient_light);
 	if (light_ptr)

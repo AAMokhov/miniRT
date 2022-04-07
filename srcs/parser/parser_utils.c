@@ -12,19 +12,25 @@
 
 #include "minirt.h"
 
-char		*readfile(char *str, int fd)
+char	*readfile(char *str, int fd)
 {
 	char	buf[BUFSIZE + 1];
 	char	*ptr;
 	int		ret;
 
-	while ((ret = read(fd, buf, BUFSIZE)) > 0)
+	ret = 1;
+	while (ret > 0)
 	{
-		ptr = str;
-		buf[ret] = '\0';
-		if (!(str = ft_strjoin(str, buf)))
-			return (NULL);
-		free(ptr);
+		ret = read(fd, buf, BUFSIZE);
+		if (ret > 0)
+		{
+			ptr = str;
+			buf[ret] = '\0';
+			str = ft_strjoin(str, buf);
+			if (!str)
+				return (NULL);
+			free(ptr);
+		}
 	}
 	return (str);
 }
@@ -59,9 +65,9 @@ float	ft_atof(char **str)
 	return (num_dec * sign);
 }
 
-int		ft_atoi_ptr(char **str)
+int	ft_atoi_ptr(char **str)
 {
-	int i;
+	int	i;
 	int	neg;
 
 	i = 0;

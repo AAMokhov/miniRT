@@ -20,10 +20,10 @@ char	*ft_strrchr(const char *s, int c)
 	while (*s)
 	{
 		if (*s == c)
-			last = (char*)s;
+			last = (char *)s;
 		s++;
 	}
 	if (*s == c)
-		last = (char*)s;
+		last = (char *)s;
 	return (last);
 }

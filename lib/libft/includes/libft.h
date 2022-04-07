@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -101,19 +101,13 @@ void				ft_putendl(char *s);
 
 void				ft_putendl_fd(char *s, int fd);
 
-void				ft_putnbr(int n);
-
-void				ft_putnbr_fd(int n, int fd);
-
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 char				**ft_split(char const *s, char c);
 
-char				*ft_itoa(int n);
+void				ft_putnbr(int n);
 
 char				*ft_substr(char const *s, unsigned int start, size_t len);
-
-char				*ft_strtrim(char const *s1, char const *set);
 
 t_list				*ft_lstnew(void *content);
 

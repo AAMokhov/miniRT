@@ -13,11 +13,8 @@
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include "mlx.h"
-# include "libft.h"
-# include "lib_vector.h"
-# include "utils.h"
-# include "camera.h"
+# include "../lib/minilibx_opengl_20191021/mlx.h"
+# include "../lib/libft/includes/libft.h"
 # include "scene.h"
 # include "figures.h"
 # include "intersection.h"
@@ -33,13 +30,9 @@
 # include <stdio.h>
 
 # ifdef MACOS
-#  define OS_NAME 1
 # endif
 
 # define BUFSIZE 32
-
-// # define WIN_HEIGHT	600
-// # define WIN_WIDTH	800
 
 # define WIN_HEIGHT	450
 # define WIN_WIDTH	600
@@ -53,17 +46,16 @@
 
 # define EPSILON 0.00001
 
-int		new_image(t_scene *scene);
-void	ft_ray_tracing(t_scene *scene);
-t_ray	trace_ray(t_point *origin, int x, int y, t_vplane *view);
+t_camera	*ft_new_cam(t_vector *origin, t_vector *direction, float fov);
+int			new_image(t_scene *scene);
+void		ft_ray_tracing(t_scene *scene);
+t_ray		trace_ray(t_point *origin, int x, int y, t_vplane *view);
 
 /*
 **			 	Parsing functions
 */
 
 void		parse_scene(t_scene *data, char **av);
-int			ft_pixel_color(t_scene *scene, t_vector *ray);
-
 void		parse_ambient_light(t_scene *data, char **str);
 void		parse_light(t_light **cs_light, char **str);
 void		parse_camera(t_scene *data, char **str);
@@ -85,6 +77,17 @@ void		check_iscomma(char **str);
 t_vector	*parse_vec(char **str);
 
 /*
+**				Output for user
+*/
+
+void		print_obj(t_scene *data);
+void		print_staff(t_scene *data);
+void		print_sphere(t_figures *ls_ptr, int i);
+void		print_plane(t_figures *ls_ptr, int i);
+void		print_cylinder(t_figures *ls_ptr, int i);
+void		print_extra(t_figures *ls_ptr);
+
+/*
 **				Minilibx functions
 */
 
@@ -95,4 +98,14 @@ int			key_hook(int keycode, t_scene *data);
 int			mouse_hook(int button, int x, int y, t_scene *scene);
 int			close_program(void *param);
 void		ft_mlx_pixel_put(t_image *canvas, int x, int y, int color);
+
+/*
+**				Utils
+*/
+
+void		ft_error_exit(int code);
+void		*enh_malloc(unsigned int size);
+void		scene_error(char *message);
+void		fatal(char *message);
+
 #endif

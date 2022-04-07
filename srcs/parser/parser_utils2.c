@@ -19,11 +19,11 @@ void	check_iscomma(char **str)
 	(*str)++;
 }
 
-t_color 	parse_color(char **str)
+t_color	parse_color(char **str)
 {
-	int	r;
-	int	g;
-	int	b;
+	int		r;
+	int		g;
+	int		b;
 	t_color	color;
 
 	r = 0;

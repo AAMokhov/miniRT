@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef TUPLE_H
-#define TUPLE_H
+# define TUPLE_H
 
 # define VECTOR	0
 # define POINT	1
@@ -34,5 +34,5 @@ struct	s_base_tuple
 t_tuple		*new_tuple(float x, float y, float z, float type);
 t_tuple		*multiply_on_scalar(const t_tuple *tuple1, float scalar);
 int			compare_tuples(const t_tuple *tuple1, const t_tuple *tuple2);
-t_vector	*reflect(t_vector* ray, t_vector* normal);
+t_vector	*reflect(t_vector *ray, t_vector *normal);
 #endif

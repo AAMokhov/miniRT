@@ -37,7 +37,7 @@ struct s_computations
 	t_point		*over_point;
 	t_vector	*eye_v;
 	t_vector	*reflect_v;
-	t_vector 	*normal;
+	t_vector	*normal;
 };
 
 int		ft_rgb2int(t_color color);
@@ -46,6 +46,6 @@ t_color	ft_color_multiplication(t_color *color_1, float scalar);
 t_color	ft_color_addition(t_color *color_1, t_color *color_2);
 t_hit	new_hit(t_scene *scene, t_ray *ray);
 void	prepare_computations(t_comp *computations, t_scene *scene, t_ray *ray);
-
 t_color	lightning(t_scene *scene, t_comp *computations);
+
 #endif
