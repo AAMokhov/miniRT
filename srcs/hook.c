@@ -6,7 +6,7 @@
 /*   By: dtentaco <dtentaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 20:56:21 by dtentaco          #+#    #+#             */
-/*   Updated: 2022/03/29 23:54:16 by dtentaco         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:01:46 by dtentaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	close_program(void *param)
 	t_scene	*scene;
 
 	scene = (t_scene *)param;
-	if (scene->canvas.img_ptr)
-		mlx_destroy_image(scene->mlx_ptr, scene->canvas.img_ptr);
 	if (scene->win_ptr)
 		mlx_destroy_window(scene->mlx_ptr, scene->win_ptr);
 	exit(EXIT_SUCCESS);
