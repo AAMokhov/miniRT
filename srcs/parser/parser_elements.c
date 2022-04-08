@@ -12,7 +12,7 @@
 
 #include "minirt.h"
 
-void		parse_cylinder(t_list **is_head_fig, char **str)
+void	parse_cylinder(t_list **is_head_fig, char **str)
 {
 	t_figures	*new_fig;
 
@@ -28,14 +28,13 @@ void		parse_cylinder(t_list **is_head_fig, char **str)
 	new_fig->fig.cy.height = ft_atof(str);
 	check_in_range(new_fig->fig.cy.height, 0, INFINITY, "cylinder");
 	new_fig->color = parse_color(str);
-
 	new_fig->intersection_func = ft_cy_intersect;
 	new_fig->normal_func = normal_at_cylinder;
 	new_fig->resize_func = resize_cy;
 	ft_lstadd_back(is_head_fig, ft_lstnew((void *)new_fig));
 }
 
-void		parse_sphere(t_list **is_head_fig, char **str)
+void	parse_sphere(t_list **is_head_fig, char **str)
 {
 	t_figures	*new_fig;
 
@@ -48,14 +47,13 @@ void		parse_sphere(t_list **is_head_fig, char **str)
 	new_fig->fig.sp.radius = ft_atof(str) / 2;
 	check_in_range(new_fig->fig.sp.radius, 0, INFINITY, "sphere");
 	new_fig->color = parse_color(str);
-
 	new_fig->intersection_func = ft_sph_intersect;
 	new_fig->normal_func = normal_at_sphere;
 	new_fig->resize_func = resize_sp;
 	ft_lstadd_back(is_head_fig, ft_lstnew((void *)new_fig));
 }
 
-void		parse_plane(t_list **is_head_fig, char **str)
+void	parse_plane(t_list **is_head_fig, char **str)
 {
 	t_figures	*new_fig;
 
@@ -67,7 +65,6 @@ void		parse_plane(t_list **is_head_fig, char **str)
 	new_fig->normal = parse_vec(str);
 	ft_vec_normalize(new_fig->normal);
 	new_fig->color = parse_color(str);
-
 	new_fig->intersection_func = ft_pl_intersect;
 	new_fig->normal_func = normal_at_plane;
 	new_fig->resize_func = resize_pl;

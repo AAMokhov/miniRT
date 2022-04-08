@@ -39,13 +39,11 @@ LIBFT_F	= ft_strlen.c \
 		  ft_putendl.c \
 		  ft_putendl_fd.c \
 		  ft_putnbr.c \
-		  ft_putnbr_fd.c \
+		  ft_putnbr.c \
 		  ft_strmapi.c \
 		  ft_split.c \
-		  ft_itoa.c \
 		  ft_strrev.c \
 		  ft_substr.c \
-		  ft_strtrim.c \
 		  ft_lstadd_back_bonus.c \
 		  ft_lstadd_front_bonus.c \
 		  ft_lstclear_bonus.c \

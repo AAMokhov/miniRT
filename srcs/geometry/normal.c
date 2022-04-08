@@ -12,9 +12,9 @@
 
 #include "minirt.h"
 
-t_vector	*run_normal_at(t_figures* this, void *computations)
+t_vector	*run_normal_at(t_figures *this, void *computations)
 {
-	return(this->normal_func(this, computations));
+	return (this->normal_func(this, computations));
 }
 
 t_vector	*normal_at_sphere(void *this, void *computations)
@@ -51,17 +51,15 @@ t_vector	*normal_at_cylinder(void *this, void *computations)
 	t_comp		*comp;
 	t_figures	*cylinder;
 	t_vector	*normal;
-	t_tuple 	*a;
-	float 		closest_dist;
+	t_tuple		*a;
+	float		closest_dist;
 
 	cylinder = (t_figures *)this;
 	comp = (t_comp *)computations;
-
 	closest_dist = closest_point_on_cylinder(cylinder, comp->ray, comp->t1,
-											 comp->t2);
+			comp->t2);
 	a = multiply_on_scalar(cylinder->normal, closest_dist);
 	a = ft_vec_add(cylinder->fig.cy.centre, a);
-
 	normal = ft_vec_subtract(comp->point, a);
 	ft_vec_normalize(normal);
 	return (normal);

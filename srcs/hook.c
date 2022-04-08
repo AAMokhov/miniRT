@@ -14,19 +14,20 @@
 
 int	close_program(void *param)
 {
-	param = (void *)param;
+	t_scene	*scene;
+
+	scene = (t_scene *)param;
+	if (scene->canvas.img_ptr)
+		mlx_destroy_image(scene->mlx_ptr, scene->canvas.img_ptr);
+	if (scene->win_ptr)
+		mlx_destroy_window(scene->mlx_ptr, scene->win_ptr);
 	exit(EXIT_SUCCESS);
-	return (1);
 }
 
 int	key_hook(int keycode, t_scene *scene)
 {
-	printf("WAS KEY %d\n", keycode);
 	if (keycode == ESC_KEY)
-	{
-		mlx_destroy_window(scene->mlx_ptr, scene->win_ptr);
-		exit(0);
-	}
+		close_program(scene);
 	else if (keycode == 13)
 		scene->cams->origin->y += 0.2;
 	else if (keycode == 1)
@@ -45,8 +46,7 @@ int	key_hook(int keycode, t_scene *scene)
 		scene->vplane->rotation_x -= 30;
 	free_matrix(scene->vplane->rotate);
 	scene->vplane->rotate = new_rotation_matrix(scene->vplane->rotation_x,
-											scene->vplane->rotation_y,
-											0);
+			scene->vplane->rotation_y, 0);
 	return (new_image(scene));
 }
 
@@ -54,7 +54,8 @@ static void	move_camera(t_scene *scene, t_tuple translation, float speed)
 {
 	t_vector	*direction;
 
-	direction = new_tuple(scene->cams->direction->x, scene->cams->direction->y, scene->cams->direction->z, VECTOR);
+	direction = new_tuple(scene->cams->direction->x,
+			scene->cams->direction->y, scene->cams->direction->z, VECTOR);
 	direction->x *= translation.x;
 	direction->y *= translation.y;
 	direction->z *= translation.z;
@@ -67,17 +68,14 @@ int	mouse_hook(int button, int x, int y, t_scene *scene)
 	t_ray		ray;
 	t_hit		hit;
 
-	printf("WAS KEY %d\n", button);
 	if (button == 4)
 		move_camera(scene, (t_tuple){-1, -1, 1, POINT}, 0.5);
 	if (button == 5)
 		move_camera(scene, (t_tuple){-1, -1, 1, POINT}, -0.5);
 	if (button == 1 || button == 3)
 	{
-		ray = trace_ray(scene->cams->origin,
-						x - (scene->width/2),
-						(y - (scene->height/2)) * -1,
-						scene->vplane);
+		ray = trace_ray(scene->cams->origin, x - (scene->width / 2),
+				(y - (scene->height / 2)) * -1, scene->vplane);
 		hit = new_hit(scene, &ray);
 		if (hit.object)
 		{
